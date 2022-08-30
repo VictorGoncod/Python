@@ -29,20 +29,20 @@ class Virtual_assit():
         
         with sr.Microphone() as source:
             if ask:
-                print ("Ouvindo...")
+                print('Ouvindo...')
                 self.engine_speak(ask)
                 
-            audio = self.r.listen(source,5,5)
+            audio = self.r.listen(source,5 , 5)
             print('Olhando para o banco de dados')
             
             try:
-                self.voice_data = sr.recognize_google(audio)
+                self.voice_data = self.r.recognize_google(audio ,language='pt-BR')
             except sr.UnknownValueError:
-                self.engine_speak(f"Desculpe {self.person}, chefe, não entendi o que você disse. Por favor, pode repetir?")
+                self.engine_speak("Desculpe chefe, não entendi o que você disse. Por favor, pode repetir?")
             except sr.RequestError:
                 self.engine_speak("Desculpe chefe, meu servidor está inativo")
                 
-            print(">>", self. voice_data.lower())
+            print(">>", self.voice_data.lower())
             self.voice_data = self.voice_data.lower()
             
             return self.voice_data.lower()
