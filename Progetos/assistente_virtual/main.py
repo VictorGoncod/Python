@@ -6,7 +6,6 @@ import webbrowser
 import pyttsx3
 import os
 
-
 class Virtual_assit():
     def __init__(self, assist_name, person):
         self.person = person
@@ -75,17 +74,18 @@ class Virtual_assit():
          
         #Google    
         if self.there_exist(['procurar por']) and 'youtube' not in voice_data:
-            search_term =voice_data.split("por")[-1]
+            search_term = voice_data.split("por")[-1]
             url ='http://google.com/search?q=' + search_term
             webbrowser.get().open(url)
             self.engine_speak("Aqui está o que eu encontrei para" + search_term + 'no google')
             
         #Youtube
         if self.there_exist(['procure no youtube por']):
-            search_term =voice_data.split("por")[-1]
+            search_term = voice_data.split("youtube")[-1]
             url ='http://www.youtube.com/results?search_query=' + search_term
             webbrowser.get().open(url)
             self.engine_speak("Aqui está o que eu encontrei para" + search_term + 'no youtube')
+            
             
 assistent = Virtual_assit('Alexa', 'Victor')
 
